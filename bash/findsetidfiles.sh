@@ -22,4 +22,4 @@ echo ""
 echo "Task2"
 echo "============="
 
-find / type f -ls | head --bytes M | head -10 | sort -r
+find ~/ -type f -exec ls -al --block-size=M {} \; | sort -hr -k5 | head | awk '{print $5, $3, $9}'
