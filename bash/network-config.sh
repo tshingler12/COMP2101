@@ -38,7 +38,7 @@
 
 hostname=$(hostname)
 lanAddress=$(ip a s $(ip a |awk '/: e/{gsub(/:/,"");print $2}')|awk '/inet /{gsub(/\/.*/,"");print $2}')
-lanHostname=$(getent hosts $(ip a s $(ip a |awk '/: e/{gsub(/:/,"");print $2}'))|awk '/inet /{gsub(/\/.*/,"");print $2}' | awk '{print $2}')
+lanHostname=$(getent hosts | head -3 | awk '{print $2}' | tail -1)
 externalIP=$(curl -s icanhazip.com)
 externalName=$(getent hosts $(curl -s icanhazip.com) | awk '{print $2}')
 routerAddress=$(ip route show | grep -i 'default via'| awk '{print $3 }')
