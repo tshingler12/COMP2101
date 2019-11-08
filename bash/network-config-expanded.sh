@@ -63,7 +63,7 @@ EOF
 # define the interface being summarized
 interface=$(ifconfig | awk '{print $1}' | grep "ens")
 interfacescount=${#interface[@]}
-echo $interfacescount
+
 
 for a in $interfacescount
 do
